@@ -30,7 +30,7 @@ def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
-def print_filtered_list(students)
+def print_filtered_name_start(students)
   puts "Would you like to filter by name? (A-Z) "
   puts "Press 'Enter' to skip"
   # print "<< "
@@ -45,10 +45,26 @@ def print_filtered_list(students)
     end  
   end
 end
+
+def print_filtered_name_length(students)
+  puts "Would you like to filter the list based on the length of the name?"
+  puts "If so, then please enter the max length the name can be?"
+  puts "Otherwise, press 'Enter' to exit"
+  length = gets.chomp.to_i
+  students.each_with_index do |student, i|
+    if (student[:name].length <= length)
+      puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    else
+      puts "Sorry, there are no names of that size!"
+      exit
+    end
+  end
+end
 # nothing happens until we call the methods
 # students = input_students
 students = input_students
 print_header
 print(students)
 print_footer(students)
-print_filtered_list(students)
+print_filtered_name_start(students)
+print_filtered_name_length(students)
