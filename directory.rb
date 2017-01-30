@@ -30,15 +30,19 @@ def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
-def print_name(students)
-  puts "Which names would you like to filter? (A-Z) "
+def print_filtered_list(students)
+  puts "Would you like to filter by name? (A-Z) "
+  puts "Press 'Enter' to skip"
   # print "<< "
   view_names = gets.chomp
-  puts "This is a list of students whos names begins with '#{view_names.upcase}'"
-  students.each_with_index do |student, i|
-    if (student[:name].start_with? view_names.downcase, view_names.upcase) 
-      puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
-    end
+  
+  if (view_names.empty? == false)
+    puts "This is a list of students whos names begins with '#{view_names.upcase}'"
+    students.each_with_index do |student, i|
+      if (student[:name].start_with? view_names.downcase, view_names.upcase) 
+        puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+      end
+    end  
   end
 end
 # nothing happens until we call the methods
@@ -47,4 +51,4 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-print_name(students)
+print_filtered_list(students)
