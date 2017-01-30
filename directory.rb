@@ -47,12 +47,9 @@ def print_filtered_name_start(students)
 end
 
 def print_filtered_name_length(students)
-  puts "Would you like to filter the list based on the length of the name?"
-  puts "If so, then please enter the max length the name can be?"
-  puts "Otherwise, press 'Enter' to exit"
-  length = gets.chomp.to_i
+  puts "These are all the students with a name with a shorter length than 12 characters"
   students.each_with_index do |student, i|
-    if (student[:name].length <= length)
+    if (student[:name].length < 12)
       puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
     else
       puts "Sorry, there are no names of that size!"
@@ -60,6 +57,21 @@ def print_filtered_name_length(students)
     end
   end
 end
+
+# def print_filtered_name_length(students)
+#   puts "Would you like to filter the list based on the length of the name?"
+#   puts "If so, then please enter the max length the name can be?"
+#   puts "Otherwise, press 'Enter' to exit"
+#   length = gets.chomp.to_i
+#   students.each_with_index do |student, i|
+#     if (student[:name].length <= length)
+#       puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+#     else
+#       puts "Sorry, there are no names of that size!"
+#       exit
+#     end
+#   end
+# end
 # nothing happens until we call the methods
 # students = input_students
 students = input_students
