@@ -23,8 +23,22 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+  counter = 0
+  while (counter < 1)
+    students.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+    counter += 1
+  end
 end
+# this method seems to throw up an error after printing out the names correctly.
+# def print_students(students)
+#   counter = 0
+#   students_counter = students.count
+#   while (counter <= students_counter)
+#     # students.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+#     puts "#{counter+1}. #{students[counter][:name]}"
+#     counter += 1
+#   end
+# end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
@@ -76,7 +90,7 @@ end
 # students = input_students
 students = input_students
 print_header
-print(students)
+print_students(students)
 print_footer(students)
 print_filtered_name_start(students)
 print_filtered_name_length(students)
