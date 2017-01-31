@@ -6,7 +6,7 @@ def input_students
   # get the first name
   name = gets.chomp
   puts "Now enter the Cohort this student will be joining?"
-  cohort = gets.chomp
+  cohort = gets.chomp.downcase
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
@@ -38,7 +38,7 @@ def input_students
       students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
     else
       puts "Please can you retype that?"
-      cohort = gets.chomp
+      cohort = gets.chomp.downcase
       
       if (cohort.include? "jan")
         students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
@@ -78,16 +78,19 @@ def input_students
 end
 
 def print_header
-  puts "The Students of Villains Academy".center(90)
-  puts "--------------------------------".center(90)
+  puts "The Students of Villains Academy".center(80)
+  puts "--------------------------------".center(80)
 end
 
 def print_students(students)
-  counter = 0
-  while (counter < 1)
-    students.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80) }
-    counter += 1
-  end
+  puts "These are the students joining the February Cohort".center(80)
+  puts "--------------------------------------------------".center(80)
+    students.each_with_index do |student, i|
+      if (student[:cohort] == :February) 
+        #(Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80) }
+      puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)  
+      end
+    end
 end
 # this method seems to throw up an error after printing out the names correctly.
 # def print_students(students)
@@ -100,7 +103,7 @@ end
 # end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(90)
+  puts "Overall, we have #{students.count} great students".center(80)
 end
 
 def print_filtered_name_start(students)
@@ -110,8 +113,8 @@ def print_filtered_name_start(students)
   view_names = gets.chomp
   
   if (view_names.empty? == false)
-    puts "This is a list of students whos names begins with '#{view_names.upcase}'".center(90)
-    puts "-----------------------------------------------------".center(90)
+    puts "This is a list of students whos names begins with '#{view_names.upcase}'".center(80)
+    puts "-----------------------------------------------------".center(80)
     students.each_with_index do |student, i|
       if (student[:name].start_with? view_names.downcase, view_names.upcase) 
         puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)
@@ -122,14 +125,11 @@ end
 
 def print_filtered_name_length(students)
   puts ""
-  puts "Students with a name with a shorter length than 12 characters".center(90)
-  puts "-------------------------------------------------------------".center(90)
+  puts "Students with a name with a shorter length than 12 characters".center(80)
+  puts "-------------------------------------------------------------".center(80)
   students.each_with_index do |student, i|
     if (student[:name].length < 12)
       puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)
-    else
-      puts "Sorry, there are no names of that size!"
-      exit
     end
   end
 end
