@@ -5,13 +5,73 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
+  puts "Now enter the Cohort this student will be joining?"
+  cohort = gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+    if (cohort.include? "jan")
+      students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "feb")
+      students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "mar")
+      students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "apr")
+      students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "may")
+      students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "jun")
+      students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "jul")
+      students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "aug")
+      students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "sep")
+      students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "oct")
+      students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "nov")
+      students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.include? "dec")
+      students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+    elsif (cohort.empty?)
+      students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+    else
+      puts "Please can you retype that?"
+      cohort = gets.chomp
+      
+      if (cohort.include? "jan")
+        students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "feb")
+        students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "mar")
+        students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "apr")
+        students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "may")
+        students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "jun")
+        students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "jul")
+        students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "aug")
+        students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "sep")
+        students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "oct")
+        students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "nov")
+        students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.include? "dec")
+        students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+      elsif (cohort.empty?)
+        students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+      end
+    end
     puts "Now we have #{students.count} students".center(80)
     # get another name from user
     name = gets.chomp
+    cohort = gets.chomp
   end
   # return the array of students
   students
