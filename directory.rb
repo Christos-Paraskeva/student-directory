@@ -139,6 +139,33 @@ def print_filtered_name_length(students)
   end
 end
 
+def interactive_menu
+  students = []
+  loop do
+    # print the menu and ask the user what to do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit" # 9 because we'll be adding more lines
+    # 2. read the input and save it into a variable
+    selection = gets.chomp
+    # 3. do what the user has asked
+    case selection
+    when "1"
+      # input the students
+      students = input_students
+    when "2"
+      # show the students
+      print_header
+      print_students(students)
+      print_footer(students)
+    when "9"
+      exit # this will cause the program to terminate
+    else
+      puts "I don't know what you mean, try again"
+    end
+  end
+end
+
 # def print_filtered_name_length(students)
 #   puts "Would you like to filter the list based on the length of the name?"
 #   puts "If so, then please enter the max length the name can be?"
@@ -155,6 +182,7 @@ end
 # end
 # nothing happens until we call the methods
 # students = input_students
+interactive_menu
 students = input_students
 print_header
 print_students(students)
