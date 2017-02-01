@@ -6,9 +6,9 @@ def input_students
   # create an empty array
   @students = []
   # get the first name
-  name = gets.strip
+  name = STDIN.gets.strip
   puts "Now enter the Cohort this student will be joining?"
-  cohort = gets.strip.downcase
+  cohort = STDIN.gets.strip.downcase
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
@@ -40,7 +40,7 @@ def input_students
       @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
     else
       puts "Please can you retype that?"
-      cohort = gets.chomp.downcase
+      cohort = STDIN.gets.chomp.downcase
       
       if (cohort.include? "jan")
         @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
@@ -76,8 +76,8 @@ def input_students
       puts "Now we have #{@students.count} students".center(80)
     end
       # get another name from user
-    name = gets.chomp
-    cohort = gets.chomp
+    name = STDIN.gets.chomp
+    cohort = STDIN.gets.chomp
   end
 end
 
@@ -142,7 +142,7 @@ end
 def interactive_menu
   loop do
     print_menu
-    process(gets.chomp)
+    process(STDIN.gets.chomp)
   end
 end
 
@@ -191,14 +191,26 @@ def save_students
   file.close
 end
 
-def load_students
-  file = File.open("students.csv", "r")
+def load_students(filename = "students.csv")
+  file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
 end
+
+def try_load_students
+  filename = ARGV.first # first argument from command line
+  return if filename.nil? # get out of the method if it isn't given
+  if File.exists?(filename) # if it exists
+    load_students(filename)
+    puts "Loaded #{@students.count} from #{filename}"
+  else # if it doesn't exists
+    puts "Sorry, #{filename} doesn't exist."
+    exit
+  end
+end  
 # def print_filtered_name_length(students)
 #   puts "Would you like to filter the list based on the length of the name?"
 #   puts "If so, then please enter the max length the name can be?"
@@ -215,6 +227,7 @@ end
 # end
 # nothing happens until we call the methods
 # students = input_students
+try_load_students
 interactive_menu
 print_header
 print_students(@students)
