@@ -68,8 +68,12 @@ def input_students
         students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
       end
     end
-    puts "Now we have #{students.count} students".center(80)
-    # get another name from user
+    if (students.count == 1)
+      puts "Now we have #{students.count} student".center(80)
+    else
+      puts "Now we have #{students.count} students".center(80)
+    end
+      # get another name from user
     name = gets.chomp
     cohort = gets.chomp
   end
@@ -83,6 +87,7 @@ def print_header
 end
 
 def print_students(students)
+  # will need to redo this method! (Chapter 8, Ex. 8)
   puts "These are the students joining the February Cohort".center(80)
   puts "--------------------------------------------------".center(80)
     students.each_with_index do |student, i|
