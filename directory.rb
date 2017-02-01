@@ -1,8 +1,10 @@
+@students = []
+
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   # create an empty array
-  students = []
+  @students = []
   # get the first name
   name = gets.strip
   puts "Now enter the Cohort this student will be joining?"
@@ -11,74 +13,72 @@ def input_students
   while !name.empty? do
     # add the student hash to the array
     if (cohort.include? "jan")
-      students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "feb")
-      students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "mar")
-      students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "apr")
-      students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "may")
-      students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "jun")
-      students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "jul")
-      students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "aug")
-      students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "sep")
-      students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "oct")
-      students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "nov")
-      students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.include? "dec")
-      students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
     elsif (cohort.empty?)
-      students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+      @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
     else
       puts "Please can you retype that?"
       cohort = gets.chomp.downcase
       
       if (cohort.include? "jan")
-        students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "feb")
-        students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "mar")
-        students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "apr")
-        students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "may")
-        students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "jun")
-        students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "jul")
-        students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "aug")
-        students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "sep")
-        students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "oct")
-        students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "nov")
-        students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.include? "dec")
-        students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
       elsif (cohort.empty?)
-        students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+        @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
       end
     end
-    if (students.count == 1)
-      puts "Now we have #{students.count} student".center(80)
+    if (@students.count == 1)
+      puts "Now we have #{@students.count} student".center(80)
     else
-      puts "Now we have #{students.count} students".center(80)
+      puts "Now we have #{@students.count} students".center(80)
     end
       # get another name from user
     name = gets.chomp
     cohort = gets.chomp
   end
-  # return the array of students
-  students
 end
 
 def print_header
@@ -140,29 +140,36 @@ def print_filtered_name_length(students)
 end
 
 def interactive_menu
-  students = []
   loop do
-    # print the menu and ask the user what to do
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit" # 9 because we'll be adding more lines
-    # 2. read the input and save it into a variable
-    selection = gets.chomp
-    # 3. do what the user has asked
-    case selection
-    when "1"
-      # input the students
-      students = input_students
-    when "2"
-      # show the students
-      print_header
-      print_students(students)
-      print_footer(students)
-    when "9"
-      exit # this will cause the program to terminate
-    else
-      puts "I don't know what you mean, try again"
-    end
+    print_menu
+    process(gets.chomp)
+  end
+end
+
+
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit" # 9 because we'll be adding more items
+end
+
+def show_students
+  print_header
+  print_students(@students)
+  print_footer(@students)
+end
+
+def process(selection)
+  case selection
+  when "1"
+  # input the students
+    input_students
+  when "2"
+    show_students
+  when "9"
+    exit # this will cause the program to terminate
+  else
+    puts "I don't know what you mean, try again"
   end
 end
 
@@ -183,9 +190,8 @@ end
 # nothing happens until we call the methods
 # students = input_students
 interactive_menu
-students = input_students
 print_header
-print_students(students)
-print_footer(students)
-print_filtered_name_start(students)
-print_filtered_name_length(students)
+print_students(@students)
+print_footer(@students)
+print_filtered_name_start(@students)
+print_filtered_name_length(@students)
