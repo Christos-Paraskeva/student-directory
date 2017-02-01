@@ -4,9 +4,9 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
+  name = gets.strip
   puts "Now enter the Cohort this student will be joining?"
-  cohort = gets.chomp.downcase
+  cohort = gets.strip.downcase
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
