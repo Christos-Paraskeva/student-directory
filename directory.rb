@@ -10,6 +10,7 @@ def input_students
   puts "Now enter the Cohort this student will be joining?"
   cohort = STDIN.gets.strip.downcase
   # while the name is not empty, repeat this code
+  # use Date::MONTHSNAMES ??
   while !name.empty? do
     # add the student hash to the array
     if (cohort.include? "jan")
@@ -91,9 +92,9 @@ def print_students(students)
   puts "These are the students joining the February Cohort".center(80)
   puts "--------------------------------------------------".center(80)
     students.each_with_index do |student, i|
-      if (student[:cohort] == :February) 
+      if (student[:cohort] == :February)
         #(Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80) }
-      puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)  
+      puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)
       end
     end
 end
@@ -181,26 +182,42 @@ end
 
 def save_students
   # open the file for writing
-  file = File.open("students.csv", "w")
+  puts "What is the name of the file you would like to save?"
+  savefile_name = STDIN.gets.chomp
+  file = File.open(savefile_name, "w")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "
+  Students were saved
+  "
   file.close
 end
 
 def load_students(filename = "students.csv")
+  puts "What is the name of the file you would like to load?"
+  loadfile_name = STDIN.gets.chomp
+  if (loadfile_name != "") 
+    filename = loadfile_name
+  end
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}
   end
+  puts "
+  Students were loaded
+  "
   file.close
 end
 
 def try_load_students
+  if ARGV.empty?
+    load_students
+  end
   filename = ARGV.first # first argument from command line
   return if filename.nil? # get out of the method if it isn't given
   if File.exists?(filename) # if it exists
