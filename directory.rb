@@ -1,3 +1,4 @@
+require 'date'
 @students = []
 
 def input_students
@@ -5,82 +6,114 @@ def input_students
   puts "To finish, just hit return twice"
   # create an empty array
   @students = []
+  months = Date::MONTHNAMES
   # get the first name
-  name = STDIN.gets.strip
+  name = STDIN.gets.chomp.capitalize
   puts "Now enter the Cohort this student will be joining?"
-  cohort = STDIN.gets.strip.downcase
+  cohort = STDIN.gets.chomp.capitalize
   # while the name is not empty, repeat this code
   # use Date::MONTHSNAMES ??
   while !name.empty? do
-    # add the student hash to the array
-    if (cohort.include? "jan")
-      @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "feb")
-      @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "mar")
-      @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "apr")
-      @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "may")
-      @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "jun")
-      @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "jul")
-      @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "aug")
-      @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "sep")
-      @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "oct")
-      @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "nov")
-      @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.include? "dec")
-      @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
-    elsif (cohort.empty?)
-      @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+    if (months.include? cohort)
+      @students << { name: name, cohort: cohort.to_sym, hobbies: :Sport, country: :England, height: :'5ft10' }
     else
-      puts "Please can you retype that?"
-      cohort = STDIN.gets.chomp.downcase
-      
-      if (cohort.include? "jan")
-        @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "feb")
-        @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "mar")
-        @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "apr")
-        @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "may")
-        @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "jun")
-        @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "jul")
-        @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "aug")
-        @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "sep")
-        @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "oct")
-        @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "nov")
-        @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.include? "dec")
-        @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
-      elsif (cohort.empty?)
-        @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
-      end
+      puts "Please check your spelling. Student not added"
     end
+    
     if (@students.count == 1)
       puts "Now we have #{@students.count} student".center(80)
     else
       puts "Now we have #{@students.count} students".center(80)
     end
       # get another name from user
+    puts "Please input another name and the cohort month?"
     name = STDIN.gets.chomp
-    cohort = STDIN.gets.chomp
+    cohort = STDIN.gets.chomp.capitalize
   end
 end
+
+
+# def input_students
+#   puts "Please enter the names of the students"
+#   puts "To finish, just hit return twice"
+#   # create an empty array
+#   @students = []
+#   # get the first name
+#   name = STDIN.gets.chomp
+#   puts "Now enter the Cohort this student will be joining?"
+#   cohort = STDIN.gets.chomp.downcase
+#   # while the name is not empty, repeat this code
+#   # use Date::MONTHSNAMES ??
+#   while !name.empty? do
+#     # add the student hash to the array
+#     if (cohort.include? "jan")
+#       @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "feb")
+#       @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "mar")
+#       @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "apr")
+#       @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "may")
+#       @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "jun")
+#       @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "jul")
+#       @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "aug")
+#       @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "sep")
+#       @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "oct")
+#       @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "nov")
+#       @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.include? "dec")
+#       @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     elsif (cohort.empty?)
+#       @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+#     else
+#       puts "Please can you retype that?"
+#       cohort = STDIN.gets.chomp.downcase
+#
+#       if (cohort.include? "jan")
+#         @students << { name: name, cohort: :January, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "feb")
+#         @students << { name: name, cohort: :February, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "mar")
+#         @students << { name: name, cohort: :March, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "apr")
+#         @students << { name: name, cohort: :April, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "may")
+#         @students << { name: name, cohort: :May, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "jun")
+#         @students << { name: name, cohort: :June, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "jul")
+#         @students << { name: name, cohort: :July, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "aug")
+#         @students << { name: name, cohort: :August, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "sep")
+#         @students << { name: name, cohort: :September, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "oct")
+#         @students << { name: name, cohort: :October, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "nov")
+#         @students << { name: name, cohort: :November, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.include? "dec")
+#         @students << { name: name, cohort: :December, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       elsif (cohort.empty?)
+#         @students << { name: name, cohort: :Unspecified, hobbies: :Sport, country: :England, height: :'5ft10' }
+#       end
+#     end
+#     if (@students.count == 1)
+#       puts "Now we have #{@students.count} student".center(80)
+#     else
+#       puts "Now we have #{@students.count} students".center(80)
+#     end
+#       # get another name from user
+#     name = STDIN.gets.chomp
+#     cohort = STDIN.gets.chomp
+#   end
+# end
 
 def print_header
   puts "The Students of Villains Academy".center(80)
