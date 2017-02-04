@@ -124,7 +124,7 @@ def print_students(students)
   # will need to redo this method! (Chapter 8, Ex. 8)
   puts "These are the students joining the February Cohort".center(80)
   puts "--------------------------------------------------".center(80)
-    students.each_with_index do |student, i|
+    @students.each_with_index do |student, i|
       if (student[:cohort] == :February)
         #(Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80) }
       puts "#{i+1}. #{student[:name]} (Cohort: #{student[:cohort]}) (Hobbies: #{student[:hobbies]}) (Height: #{student[:height]}) (Country of Birth: #{student[:country]})".center(80)
@@ -217,12 +217,17 @@ def save_students
   # open the file for writing
   puts "What is the name of the file you would like to save?"
   savefile_name = STDIN.gets.chomp
+  
+  if (savefile_name == "")
+    savefile_name = 'students.csv'
+  end
+  
   File::open(savefile_name, "w") do |f|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
       csv_line = student_data.join(",")
       f.puts csv_line
-    end
+    end    
     puts "
     Students were saved
     "
