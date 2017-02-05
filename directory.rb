@@ -1,4 +1,5 @@
 require 'date'
+require 'csv'
 @students = []
 
 def input_students
@@ -213,6 +214,7 @@ def process(selection)
   end
 end
 
+# changed to use Ruby's CSV interface
 def save_students
   # open the file for writing
   puts "What is the name of the file you would like to save?"
@@ -222,12 +224,18 @@ def save_students
     savefile_name = 'students.csv'
   end
   
-  File::open(savefile_name, "w") do |f|
+  CSV.open(savefile_name, 'w') do |csv|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
-      csv_line = student_data.join(",")
-      f.puts csv_line
-    end    
+      csv.puts student_data
+    end
+  
+  # File::open(savefile_name, "w") do |f|
+#     @students.each do |student|
+#       student_data = [student[:name], student[:cohort]]
+#       csv_line = student_data.join(",")
+#       f.puts csv_line
+#     end
     puts "
     Students were saved
     "
@@ -249,15 +257,17 @@ end
 #   file.close
 # end
 
+# changed to use Ruby CSV interface
 def load_students(filename = "students.csv")
   puts "What is the name of the file you would like to load?"
   loadfile_name = STDIN.gets.chomp
   if (loadfile_name != "") 
     filename = loadfile_name
   end
-  File::open(filename, "r") do |f|
-    f.readlines.each do |line|
-      name, cohort = line.chomp.split(',')
+  
+  CSV.open(filename) do |row|
+    row.each do |line|
+      name, cohort = line
       @students << {name: name, cohort: cohort.to_sym}
     end
     puts "
